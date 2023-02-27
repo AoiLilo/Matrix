@@ -1,0 +1,36 @@
+<div class="sim-slider">
+            <div class="sim-slider-list">
+                <div class="sim-slider-screen" alt="screen">
+                <div class="wrapper_main_sliderlist1 sim-slider-element">
+                    <div class="wrapper_main_title_sliderlist1" alt="1">
+                        <h1>Калькулятор матрицы</h1>
+                    </div>
+                    <div class="wrapper_main_form_sliderlist1" alt="1">
+                        <label for="date" class="form_label_sliderlist1">Введите дату рождения</label>
+                        <input type="date" id="date" class="form_date_sliderlist1" step="1"/>
+
+                        <script src="../Ксюшин сайт/scripts/today.js"></script>
+                    </div>
+                    <button class="wrapper_main_button_sliderlist1" alt="1">
+                        Рассчитать матрицу
+                    </button>
+                </div>
+
+                <div class="wrapper_main_sliderlist2 sim-slider-element">
+                    <div class="wrapper_main_title_sliderlist2" alt="2">
+                        <h1>Калькулятор матрицы совместимостей</h1>
+                    </div>
+                    <div class="wrapper_main_form_sliderlist2" alt="2">
+                        <label for="date" class="form_label_sliderlist2">Введите даты рождения</label>
+                        <input type="date" id="date" class="form_date_sliderlist1" step="1"/>
+                        <input type="date" id="date" class="form_date_sliderlist1" step="1"/>
+
+                        <script src="../Ксюшин сайт/scripts/today.js"></script>
+                    </div>
+                    <button class="wrapper_main_button_sliderlist2" alt="2">
+                        Рассчитать матрицу
+                    </button>
+                </div>
+                </div>
+            </div>
+        </div>

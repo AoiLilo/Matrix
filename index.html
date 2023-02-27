@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport"
+        content="width=device-width, initial-scale=1.0" />
+        <title>Матрица</title>
+        <style>
+            @font-face {
+             font-family: quicky; /* Гарнитура шрифта */
+             src: url(fonts/quicky.ttf); /* Путь к файлу со шрифтом */
+            }
+        </style>
+        <link href="css/style.css" rel="stylesheet" />
+        <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+        <link rel="icon" href="img/craft_fox_origami_paper_creative_icon_226477.ico" type="image/x-icon">
+        
+    </head>
+
+    <body>
+            
+            <div class="wrapper_container">
+
+                <div class="slider_container">
+
+                    <a class="prev arrow" onclick="minusSlide()">&#10094;</a>
+
+                    <div class="slider">
+
+                        <div class="wrapper_main_sliderlist item">
+                            <div class="wrapper_main_title_sliderlist" alt="Первый слайд">
+                                <h1>Калькулятор матрицы</h1>
+                            </div>
+                            <div class="wrapper_main_form_sliderlist" alt="Первый слайд">
+                                <label for="date" class="form_label_sliderlist">Введите дату рождения</label>
+                                <input type="date" id="date" class="form_date_sliderlist" step="1"/>
+
+                                <script src="../Ксюшин сайт/scripts/today.js"></script>
+                            </div>
+
+                                <button id="solo_button" onclick = "calc()" class="wrapper_main_button_sliderlist">
+                                    <p>Рассчитать матрицу</p>
+                                </button>
+                            <script src="/scripts/localStorage.js"></script>
+                            <script>
+                                function calc() {
+                                    location.href='/solo.html'
+                                }
+                            </script>
+                        </div>
+
+                        <div class="wrapper_main_sliderlist item">
+                            <div class="wrapper_main_title_sliderlist" alt="2">
+                                <h1>Калькулятор матрицы совместимостей</h1>
+                            </div>
+                            <div class="wrapper_main_form_sliderlist" alt="2">
+                                <label for="date" class="form_label_sliderlist">Введите даты рождения</label>
+                                <div class="date_container">
+                                <input type="date" id="date" class="form_date_sliderlist" step="1"/>
+                                <input type="date" id="date" class="form_date_sliderlist" step="1"/>
+                                </div>
+                            </div>
+
+                                <button onclick = "calcDuo()" class="wrapper_main_button_sliderlist">
+                                    <p>Рассчитать матрицу</p>
+                                </button>
+                            <script>
+                                function calcDuo() {
+                                    location.href='/duo.html'
+                                }
+                            </script>
+                        </div>
+
+                        
+                    </div>
+                    <script src="../Ксюшин сайт/scripts/calc.js"></script>
+                    
+                    <a class="next arrow" onclick="plusSlide()">&#10095;</a>
+
+                    <script src="scripts/sim-slider.js"></script>
+                </div>
+            </div>
+
+    </body>

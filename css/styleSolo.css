@@ -1,0 +1,365 @@
+*,
+::before
+::after {
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+html, body {
+    margin: 0;
+
+    height: 100%;
+    width: 100%;
+}
+h1, h2, h3 {
+    margin: 0;
+}
+.wrapper_container {
+    background-color: black;
+    color: white;
+
+    width: 100vw;
+    height: 100vh;
+}
+.left_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50vw;
+    height: 100vh;
+}
+.octagon_container {
+    position: relative;
+    max-width: fit-content;
+}
+.octagon {
+    width: 50vw;
+    height: 100vh;
+} 
+#octagon {
+    width: 860px;
+    height: 860px;
+}
+.table_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2vh;
+
+    position: absolute;
+    right: 0vw;
+    top: 0vh;
+
+    width: 50vw;
+    height: 100vh;
+}
+.table {
+    width: 90%;
+    height: 45vh;
+    background-color: gray;
+}
+.description {
+    width: 90%;
+    height: 45vh;
+    background-color: gray;
+}
+
+.matrix_value {
+    font-family: 'Montserrat';
+    font-size: 40px;
+    font-weight: 700;
+    text-align: center;
+    text-shadow: 0px 0px 6px rgba(0,0,0,0.7);
+}
+.KR_VERH {
+    display: block;
+    position: absolute;
+    left: 46.1%;
+    top: 2%;
+
+    width: 8%;
+}
+.KR_VERH_SR {
+    display: block;
+    position: absolute;
+    left: 47.1%;
+    top: 10.4%;
+    font-size: 32px;
+
+    width: 6%;
+}
+.KR_VERH_NIZ {
+    display: block;
+    position: absolute;
+    left: 47.5%;
+    top: 16.4%;
+    font-size: 30px;
+
+    width: 5%;
+}
+.KR_NIZ {
+    display: block;
+    position: absolute;
+    left: 46.1%;
+    top: 91.7%;
+
+    width: 8%;
+}
+.KR_NIZ_SR {
+    display: block;
+    position: absolute;
+    left: 47%;
+    top: 84.5%;
+    font-size: 32px;
+
+    width: 6%;
+}
+.KR_NIZ_VERH {
+    display: block;
+    position: absolute;
+    left: 47.5%;
+    bottom: 16.8%;
+    font-size: 30px;
+
+    width: 5%;
+}
+.KR_LEV {
+    display: block;
+    position: absolute;
+    left: 0.9%;
+    top: 47%;
+
+    width: 8%;
+}
+.KR_LEV_SR {
+    display: block;
+    position: absolute;
+    left: 8.7%;
+    top: 47.6%;
+    font-size: 32px;
+
+    width: 8%;
+}
+.KR_LEV_LEV {
+    display: block;
+    position: absolute;
+    left: 16.05%;
+    top: 47.7%;
+    font-size: 30px;
+
+    width: 5%;
+}
+.KR_PRAV {
+    display: block;
+    position: absolute;
+    right: 0.8%;
+    top: 47%;
+
+    width: 8%;
+}
+.KR_PRAV_SR {
+    display: block;
+    position: absolute;
+    right: 8.8%;
+    top: 47.6%;
+    font-size: 32px;
+
+    width: 8%;
+}
+.KR_PRAV_PRAV {
+    display: block;
+    position: absolute;
+    right: 16.05%;
+    top: 47.7%;
+    font-size: 30px;
+
+    width: 5%;
+}
+.KR_DIAG_LV {
+    display: block;
+    position: absolute;
+    left: 12.2%;
+    top: 13.1%;
+
+    width: 8%;
+}
+.KR_DIAG_LSR {
+    display: block;
+    position: absolute;
+    left: 18.5%;
+    top: 20%;
+    font-size: 32px;
+
+    width: 8%;
+}
+.KR_DIAG_LNIZ {
+    display: block;
+    position: absolute;
+    left: 24.8%;
+    top: 25%;
+    font-size: 30px;
+
+    width: 5%;
+}
+.KR_DIAG_RV {
+    display: block;
+    position: absolute;
+    left: 80%;
+    top: 13.1%;
+
+    width: 8%;
+}
+.KR_DIAG_RSR {
+    display: block;
+    position: absolute;
+    left: 73.7%;
+    top: 20%;
+    font-size: 32px;
+
+    width: 8%;
+}
+.KR_DIAG_RNIZ {
+    display: block;
+    position: absolute;
+    left: 70.2%;
+    top: 25%;
+    font-size: 30px;
+
+    width: 5%;
+}
+.KR_DIAG_NLV {
+    display: block;
+    position: absolute;
+    left: 12.2%;
+    top: 80.7%;
+
+    width: 8%;
+}
+.KR_DIAG_NLSR {
+    display: block;
+    position: absolute;
+    left: 18.5%;
+    top: 75.1%;
+    font-size: 32px;
+
+    width: 8%;
+}
+.KR_DIAG_NLNIZ {
+    display: block;
+    position: absolute;
+    left: 24.8%;
+    top: 70.1%;
+    font-size: 30px;
+
+    width: 5%;
+}
+.KR_DIAG_NRV {
+    display: block;
+    position: absolute;
+    right: 12.2%;
+    top: 80.7%;
+
+    width: 8%;
+}
+.KR_DIAG_NRSR {
+    display: block;
+    position: absolute;
+    right: 18.3%;
+    top: 75%;
+    font-size: 32px;
+
+    width: 8%;
+}
+.KR_DIAG_NRNIZ {
+    display: block;
+    position: absolute;
+    right: 24.8%;
+    top: 70.1%;
+    font-size: 30px;
+
+    width: 5%;
+}
+.KR_CENTR {
+    display: block;
+    position: absolute;
+    left: 46.1%;
+    top: 46.5%;
+    font-size: 46px;
+
+    width: 8%;
+}
+.KR_CENTR_SR {
+    display: block;
+    position: absolute;
+    left: 55%;
+    top: 47%;
+
+    width: 7%;
+}
+.KR_CENTR_PRAV {
+    display: block;
+    position: absolute;
+    left: 62.4%;
+    top: 47.7%;
+    font-size: 30px;
+
+    width: 5%;
+}
+.KR_ZEL_VERH {
+    display: block;
+    position: absolute;
+    left: 47.5%;
+    top: 30.9%;
+    font-size: 30px;
+
+    width: 5%;
+}
+.KR_ZEL_LEV {
+    display: block;
+    position: absolute;
+    left: 30.7%;
+    top: 47.65%;
+    font-size: 30px;
+
+    width: 5%;
+}
+.LIN_MR {
+    display: block;
+    position: absolute;
+    left: 30.7%;
+    top: 36.2%;
+    font-size: 12px;
+
+    font-style: normal;
+
+    transform: rotate(45.5deg);
+    width: fit-content;
+}
+.LIN_ZHR {
+    display: block;
+    position: absolute;
+    left: 52.1%;
+    top: 36.2%;
+    font-size: 12px;
+
+    font-style: normal;
+
+    transform: rotate(-45.5deg);
+    width: fit-content;
+}
+.heart {
+    display: block;
+    position: absolute;
+    left: 56%;
+    top: 64%;
+    font-size: 42px;
+}
+.dollar {
+    display: block;
+    position: absolute;
+    left: 64%;
+    top: 56%;
+    font-size: 42px;
+}

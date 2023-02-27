@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport"
+        content="width=device-width, initial-scale=1.0" />
+        <title>Матрица</title>
+        <style>
+            @font-face {
+             font-family: quicky; /* Гарнитура шрифта */
+             src: url(fonts/quicky.ttf); /* Путь к файлу со шрифтом */
+
+             font-family: Montserrat; /* Гарнитура шрифта */
+             src: url(fonts/Montserrat-Black.ttf); /* Путь к файлу со шрифтом */
+            }
+        </style>
+        <link href="css/styleSolo.css" rel="stylesheet" />
+        <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+        <link rel="icon" href="img/craft_fox_origami_paper_creative_icon_226477.ico" type="image/x-icon">
+        
+    </head>
+
+    <body>
+        <div class="wrapper_container">
+        <div class="left_container">
+            <div class="octagon_container">
+                <canvas id="octagon" class="octagon">
+                    
+                    <script>
+                        let canvas = document.getElementById('octagon');
+                        canvas.height = 860;
+                        canvas.width = 860;
+                        let context = canvas.getContext('2d');
+                        let pi = Math.PI;
+
+                        context.strokeStyle = 'white';
+                        context.lineWidth = '4';
+
+                        // Восьмиугольник
+                        context.beginPath();
+                        context.moveTo(0, 430);
+                        context.lineTo(107.5, 107.5);
+                        context.lineTo(430, 0);
+                        context.lineTo(752.5, 107.5);
+                        context.lineTo(860, 430);
+                        context.lineTo(752.5, 752,5);
+                        context.lineTo(430, 860);
+                        context.lineTo(107.5, 752,5);
+                        context.closePath();
+                        context.stroke();
+                        context.lineCap = 'round';
+
+                        // Ромб
+                        context.beginPath();
+                        context.lineWidth = '4';
+                        context.moveTo(430, 40);
+                        context.lineTo(820, 430);
+                        context.lineTo(430, 820);
+                        context.lineTo(40, 430);
+                        context.closePath();
+                        context.stroke();
+
+                        // Квадрат
+                        context.beginPath();
+                        context.lineWidth = '4';
+                        context.moveTo(160, 160);
+                        context.lineTo(700, 160);
+                        context.lineTo(700, 700);
+                        context.lineTo(160, 700);
+                        context.closePath();
+                        context.stroke();
+
+                        // Центральные линии +
+                        context.beginPath();
+                        context.lineWidth = '3';
+                        context.moveTo(430,430);
+                        context.lineTo(430,860);
+                        context.moveTo(430,430);
+                        context.lineTo(860,430);
+                        context.moveTo(430,430);
+                        context.lineTo(0,430);
+                        context.moveTo(430,430);
+                        context.lineTo(430, 0);
+                        context.stroke();
+                        context.closePath();
+
+                        // Центральные линии Х
+                        context.beginPath();
+                        context.lineWidth = '3';
+                        context.fillStyle = 'white';
+                        context.moveTo(430,430);
+                        context.lineTo(253,253);
+                        context.lineTo(255,260);
+                        context.lineTo(260,255);
+                        context.lineTo(253,253);
+                        context.closePath();
+                        context.fill()
+                        context.stroke();
+
+                        context.beginPath();
+                        context.lineWidth = '3';
+                        context.fillStyle = 'white';
+                        context.moveTo(430,430);
+                        context.lineTo(606,606);
+                        context.lineTo(605,600);
+                        context.lineTo(600,605);
+                        context.lineTo(606,606);
+                        context.closePath();
+                        context.fill();
+                        context.stroke();
+
+                        context.beginPath();
+                        context.lineWidth = '3';
+                        context.fillStyle = 'white';
+                        context.moveTo(430,430);
+                        context.lineTo(606,253);
+                        context.lineTo(599,255);
+                        context.lineTo(604,260);
+                        context.lineTo(606,253);
+                        context.closePath();
+                        context.fill();
+                        context.stroke();
+
+                        context.beginPath();
+                        context.lineWidth = '3';
+                        context.fillStyle = 'white';
+                        context.moveTo(430,430);
+                        context.lineTo(253,606);
+                        context.lineTo(255,599);
+                        context.lineTo(260,604);
+                        context.lineTo(253,606);
+                        context.stroke();
+
+                        // Пунктирная линия
+                        var CP = window.CanvasRenderingContext2D && CanvasRenderingContext2D.prototype;
+                        if (CP && CP.lineTo){
+                        CP.dashedLine = function(x,y,x2,y2,dashArray){
+                            if (!dashArray) dashArray=[10,5];
+                            if (dashLength==0) dashLength = 0.001; // Hack for Safari
+                            var dashCount = dashArray.length;
+                            this.moveTo(x, y);
+                            var dx = (x2-x), dy = (y2-y);
+                            var slope = dx ? dy/dx : 1e15;
+                            var distRemaining = Math.sqrt( dx*dx + dy*dy );
+                            var dashIndex=0, draw=true;
+                            while (distRemaining>=0.1){
+                            var dashLength = dashArray[dashIndex++%dashCount];
+                            if (dashLength > distRemaining) dashLength = distRemaining;
+                            var xStep = Math.sqrt( dashLength*dashLength / (1 + slope*slope) );
+                            if (dx<0) xStep = -xStep;
+                            x += xStep
+                            y += slope*xStep;
+                            this[draw ? 'lineTo' : 'moveTo'](x,y);
+                            distRemaining -= dashLength;
+                            draw = !draw;
+                            }
+                        }
+                        }
+                        context.beginPath();
+                        context.dashedLine(700,430,430,700,[10,10]);
+                        context.closePath();
+                        context.stroke();
+
+                        // Круг пунктирной линии
+                        context.beginPath();
+                        context.lineWidth = '4';
+                        context.fillStyle = 'black';
+                        context.arc (565, 565, 22.5, 0, pi*2, true);
+                        context.stroke();
+                        context.fill();
+                        context.closePath();
+
+                        // Верхний круг пунктирной линии
+                        context.beginPath();
+                        context.lineWidth = '4';
+                        context.fillStyle = 'black';
+                        context.arc (630, 550, 22.5, 0, pi*2, true);
+                        context.stroke();
+                        context.fill();
+                        context.closePath();
+                        
+                        // Верхний круг пунктирной линии
+                        context.beginPath();
+                        context.lineWidth = '4';
+                        context.fillStyle = 'black';
+                        context.arc (550, 630, 22.5, 0, pi*2, true);
+                        context.stroke();
+                        context.fill();
+                        context.closePath();
+
+                        // Центральный средний круг
+                        context.beginPath();
+                        context.lineWidth = '4';
+                        context.fillStyle = 'black';
+                        context.arc (503, 430, 30, 0, pi*2, true);
+                        context.stroke();
+                        context.fill();
+                        context.closePath();
+
+                        // Центральный внешний круг
+                        context.beginPath();
+                        context.lineWidth = '4';
+                        context.fillStyle = 'black';
+                        context.arc (558, 430, 22.5, 0, pi*2, true);
+                        context.stroke();
+                        context.fill();
+                        context.closePath();
+
+                        // Левый верхний круг РОМБ
+                        context.beginPath();
+                        context.lineWidth = '4';
+                        context.fillStyle = 'black';
+                        context.arc (235, 235, 24, 0, pi*2, true);
+                        context.stroke();
+                        context.fill();
+                        context.closePath();
+
+                        // Правый верхний круг РОМБ
+                        context.beginPath();
+                        context.lineWidth = '4';
+                        context.fillStyle = 'black';
+                        context.arc (625, 235, 24, 0, pi*2, true);
+                        context.stroke();
+                        context.fill();
+                        context.closePath();
+
+                        // Правый нижний круг РОМБ
+                        context.beginPath();
+                        context.lineWidth = '4';
+                        context.fillStyle = 'black';
+                        context.arc (625, 625, 24, 0, pi*2, true);
+                        context.stroke();
+                        context.fill();
+                        context.closePath();
+
+                        // Левый нижний круг РОМБ
+                        context.beginPath();
+                        context.lineWidth = '4';
+                        context.fillStyle = 'black';
+                        context.arc (235, 625, 24, 0, pi*2, true);
+                        context.stroke();
+                        context.fill();
+                        context.closePath();
+
+                        // Верхний бирюзовый круг
+                        context.beginPath();
+                        context.fillStyle = '#16959c';
+                        context.arc (430, 160, 24, 0, pi*2, true);
+                        context.fill();
+                        context.closePath();
+
+                        // Правый оранжевый круг
+                        context.beginPath();
+                        context.fillStyle = '#FF7F0A';
+                        context.arc (700, 430, 24, 0, pi*2, true);
+                        context.fill();
+                        context.closePath();
+
+                        // Нижний оранжевый круг
+                        context.beginPath();
+                        context.fillStyle = '#FF7F0A';
+                        context.arc (430, 700, 24, 0, pi*2, true);
+                        context.fill();
+                        context.closePath();
+
+                        // Левый бирюзовый круг
+                        context.beginPath();
+                        context.fillStyle = '#16959c';
+                        context.arc (160, 430, 24, 0, pi*2, true);
+                        context.fill();
+                        context.closePath();
+
+                        // Верхний левый круг ВОСЬМИУГОЛЬНИК
+                        context.beginPath();
+                        context.lineWidth = '6';
+                        context.fillStyle = 'black';
+                        context.arc (138.5, 138.5, 42, 0, pi*2, true);
+                        context.stroke();
+                        context.fill();
+                        context.closePath();
+
+                        // Верхний фиолетовый круг ВОСЬМИУГЛЬНИК
+                        context.beginPath();
+                        context.fillStyle = '#662A8E';
+                        context.arc (430, 41.5, 41.5, 0, pi*2, true);
+                        context.fill();
+                        context.closePath();
+
+                        // Верхний правый круг ВОСЬМИУГОЛЬНИК
+                        context.beginPath();
+                        context.lineWidth = '6';
+                        context.fillStyle = 'black';
+                        context.arc (721.5, 138.5, 41.5, 0, pi*2, true);
+                        context.stroke();
+                        context.fill();
+                        context.closePath();
+
+                        // Правый красный круг ВОСЬМИУГОЛЬНИК
+                        context.beginPath();
+                        context.fillStyle = '#9F1715';
+                        context.arc (818, 430, 42, 0, pi*2, true);
+                        context.fill();
+                        context.closePath();
+
+                        // Правый нижний круг ВОСЬМИУГОЛЬНИК
+                        context.beginPath();
+                        context.lineWidth = '6';
+                        context.fillStyle = 'black';
+                        context.arc (721.5, 721.5, 41.5, 0, pi*2, true);
+                        context.stroke();
+                        context.fill();
+                        context.closePath();
+
+                        // Нижний красный круг ВОСЬМИУГОЛЬНИК
+                        context.beginPath();
+                        context.fillStyle = '#9F1715';
+                        context.arc (430, 818, 42, 0, pi*2, true);
+                        context.fill();
+                        context.closePath();
+
+                        // Левый нижний круг ВОСЬМИУГОЛЬНИК
+                        context.beginPath();
+                        context.lineWidth = '6';
+                        context.fillStyle = 'black';
+                        context.arc (138.5, 721.5, 41.5, 0, pi*2, true);
+                        context.stroke();
+                        context.fill();
+                        context.closePath();
+
+                        // Левый фиолетовый круг ВОСЬМИУГОЛЬНИК
+                        context.beginPath();
+                        context.fillStyle = '#662A8E';
+                        context.arc (41.5, 430, 41.5, 0, pi*2, true);
+                        context.fill();
+                        context.closePath();
+
+                        // Левый синий средний круг
+                        context.beginPath();
+                        context.fillStyle = '#2030BF';
+                        context.arc (109, 430, 27, 0, pi*2, true);
+                        context.fill();
+                        context.closePath();
+
+                        // Правый круг средний
+                        context.beginPath();
+                        context.lineWidth = '6';
+                        context.fillStyle = 'black';
+                        context.arc (750, 430, 24, 0, pi*2, true);
+                        context.stroke();
+                        context.fill();
+                        context.closePath();
+
+                        // Нижний круг средний
+                        context.beginPath();
+                        context.lineWidth = '6';
+                        context.fillStyle = 'black';
+                        context.arc (430, 750, 24, 0, pi*2, true);
+                        context.stroke();
+                        context.fill();
+                        context.closePath();
+
+                        // Верхний синий средний круг
+                        context.beginPath();
+                        context.fillStyle = '#2030BF';
+                        context.arc (430, 109, 27, 0, pi*2, true);
+                        context.fill();
+                        context.closePath();
+
+                        // Центральный круг
+                        context.beginPath();
+                        context.fillStyle = '#dfd60f';
+                        context.arc (430, 430, 42, 0, pi*2, true);
+                        context.fill();
+                        context.closePath();
+
+                        // Правый верхний круг средний
+                        context.beginPath();
+                        context.lineWidth = '6';
+                        context.fillStyle = 'black';
+                        context.arc (668, 193, 32, 0, pi*2, true);
+                        context.stroke();
+                        context.fill();
+                        context.closePath();
+
+                        // Правый нижний круг средний
+                        context.beginPath();
+                        context.lineWidth = '6';
+                        context.fillStyle = 'black';
+                        context.arc (668, 667, 32, 0, pi*2, true);
+                        context.stroke();
+                        context.fill();
+                        context.closePath();
+
+                        // Левый нижний круг средний
+                        context.beginPath();
+                        context.lineWidth = '6';
+                        context.fillStyle = 'black';
+                        context.arc (193, 668, 32, 0, pi*2, true);
+                        context.stroke();
+                        context.fill();
+                        context.closePath();
+
+                        // Правый верхний круг средний
+                        context.beginPath();
+                        context.lineWidth = '6';
+                        context.fillStyle = 'black';
+                        context.arc (193, 193, 32, 0, pi*2, true);
+                        context.stroke();
+                        context.fill();
+                        context.closePath();
+
+                        // Верхний средний круг +
+                        context.beginPath();
+                        context.fillStyle = '#078E3C';
+                        context.arc (430, 285, 24, 0, pi*2, true);
+                        context.fill();
+                        context.closePath();
+
+                        // Левый средний круг +
+                        context.beginPath();
+                        context.fillStyle = '#078E3C';
+                        context.arc (285, 430, 24, 0, pi*2, true);
+                        context.fill();
+                        context.closePath();
+
+                    </script>
+                </canvas>
+                <div class="KR_VERH matrix_value">
+                    0
+                </div>
+                <div class="KR_VERH_SR matrix_value">
+                    0
+                </div>
+                <div class="KR_VERH_NIZ matrix_value">
+                    0
+                </div>
+                <div class="KR_NIZ matrix_value">
+                    5
+                </div>
+                <div class="KR_NIZ_SR matrix_value">
+                    0
+                </div>
+                <div class="KR_NIZ_VERH matrix_value">
+                    0
+                </div>
+                <div class="KR_LEV matrix_value">
+                    1
+                </div>
+                <div class="KR_LEV_SR matrix_value">
+                    0
+                </div>
+                <div class="KR_LEV_LEV matrix_value">
+                    0
+                </div>
+                <div class="KR_PRAV matrix_value">
+                    10
+                </div>
+                <div class="KR_PRAV_SR matrix_value">
+                    0
+                </div>
+                <div class="KR_PRAV_PRAV matrix_value">
+                    0
+                </div>
+                <div class="KR_DIAG_LV matrix_value">
+                    0
+                </div>
+                <div class="KR_DIAG_LSR matrix_value">
+                    0
+                </div>
+                <div class="KR_DIAG_LNIZ matrix_value">
+                    0
+                </div>
+                <div class="KR_DIAG_RV matrix_value">
+                    0
+                </div>
+                <div class="KR_DIAG_RSR matrix_value">
+                    0
+                </div>
+                <div class="KR_DIAG_RNIZ matrix_value">
+                    0
+                </div>
+                <div class="KR_DIAG_NLV matrix_value">
+                    0
+                </div>
+                <div class="KR_DIAG_NLSR matrix_value">
+                    0
+                </div>
+                <div class="KR_DIAG_NLNIZ matrix_value">
+                    0
+                </div>
+                <div class="KR_DIAG_NRV matrix_value">
+                    0
+                </div>
+                <div class="KR_DIAG_NRSR matrix_value">
+                    0
+                </div>
+                <div class="KR_DIAG_NRNIZ matrix_value">
+                    0
+                </div>
+                <div class="KR_CENTR matrix_value">
+                    10
+                </div>
+                <div class="KR_CENTR_SR matrix_value">
+                    0
+                </div>
+                <div class="KR_CENTR_PRAV matrix_value">
+                    0
+                </div>
+                <div class="KR_ZEL_VERH matrix_value">
+                    0
+                </div>
+                <div class="KR_ZEL_LEV matrix_value">
+                    0
+                </div>
+                <div class="LIN_MR matrix_value">
+                    Линия мужского рода
+                </div>
+                <div class="LIN_ZHR matrix_value">
+                    Линия женского рода
+                </div>
+                <div class="heart">
+                    <i class='bx bx-heart-circle' ></i>
+                </div>
+                <div class="dollar">
+                    <i class='bx bx-dollar-circle' ></i>
+                </div>
+                <script src="../Ксюшин сайт/scripts/calc.js"></script>
+            </div>
+        </div>
+            <div class="table_container">
+                <div class="table">
+
+                </div>
+                <div class="description">
+
+                </div>
+            </div>
+        </div>
+
+        
+    </body>
